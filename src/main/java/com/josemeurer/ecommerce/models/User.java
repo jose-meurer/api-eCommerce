@@ -21,7 +21,7 @@ public class User implements Serializable {
     @Column(unique = true)
     private String email;
     private String phone;
-    private LocalDate birthDade;
+    private LocalDate birthDate;
     private String password;
 
     @OneToMany(mappedBy = "client")
@@ -30,12 +30,12 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(UUID id, String name, String email, String phone, LocalDate birthDade, String password) {
+    public User(UUID id, String name, String email, String phone, LocalDate birthDate, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.birthDade = birthDade;
+        this.birthDate = birthDate;
         this.password = password;
     }
 
@@ -71,12 +71,12 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
-    public LocalDate getBirthDade() {
-        return birthDade;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirthDade(LocalDate birthDade) {
-        this.birthDade = birthDade;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getPassword() {

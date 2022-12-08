@@ -2,10 +2,7 @@ package com.josemeurer.ecommerce.models;
 
 import jakarta.persistence.*;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_product")
@@ -89,6 +86,10 @@ public class Product {
 
     public Set<OrderItem> getOrderItems() {
         return orderItems;
+    }
+
+    public List<Order> getOrders() {
+        return orderItems.stream().map(OrderItem::getOrder).toList();
     }
 
     @Override

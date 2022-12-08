@@ -4,10 +4,7 @@ import com.josemeurer.ecommerce.models.enums.OrderStatus;
 import jakarta.persistence.*;
 
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_order")
@@ -83,6 +80,10 @@ public class Order {
 
     public Set<OrderItem> getOrderItems() {
         return orderItems;
+    }
+
+    public List<Product> getProduct() {
+        return orderItems.stream().map(OrderItem::getProduct).toList();
     }
 
     @Override
