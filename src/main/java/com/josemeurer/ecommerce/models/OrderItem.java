@@ -5,11 +5,12 @@ import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "tb_order_item")
-public class OrderItem {
+public class OrderItem implements Serializable {
 
     @EmbeddedId
     private OrderItemPK id = new OrderItemPK();

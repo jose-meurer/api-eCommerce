@@ -3,12 +3,13 @@ package com.josemeurer.ecommerce.models;
 import com.josemeurer.ecommerce.models.enums.OrderStatus;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.*;
 
 @Entity
 @Table(name = "tb_order")
-public class Order {
+public class Order implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
