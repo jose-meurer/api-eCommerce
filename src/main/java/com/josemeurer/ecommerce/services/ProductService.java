@@ -5,6 +5,8 @@ import com.josemeurer.ecommerce.models.Product;
 import com.josemeurer.ecommerce.repositories.ProductRepository;
 import com.josemeurer.ecommerce.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,5 +24,11 @@ public class ProductService {
         Product entity = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
         return new ProductDTO(entity);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<ProductDTO> findAllPaged(Pageable pageable) {
+        Page<Product> page = repository.findAll(pageable);
+        return page.map(ProductDTO::new);
     }
 }
